@@ -10,11 +10,11 @@ def receive_images():
 
     # Send distance over UDP
     distance_udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    distance_server = ('172.19.184.55', 6021)
+    distance_server = ('127.0.0.1', 6021)
 
     # Receive camera images over TCP
     image_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    image_socket.connect(('192.168.1.69', 6011))  # Replace <server_ip> with server's IP
+    image_socket.connect(('127.0.0.1', 6011))  # Replace <server_ip> with server's IP
 
 
     data = b""

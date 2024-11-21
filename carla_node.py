@@ -8,7 +8,7 @@ import cv2
 def carla_send_images():
     # Send images over TCP
     image_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    image_socket.bind(('192.168.1.69', 6011))
+    image_socket.bind(('127.0.0.1', 6011))
     image_socket.listen(1)
 
     print("Server is waiting for a connection...")
@@ -31,7 +31,7 @@ def carla_send_images():
 def receive_new_speed():
     # Receive new speed over UDP
     new_speed_udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    new_speed_udp_socket.bind(('192.168.1.69', 6031))
+    new_speed_udp_socket.bind(('127.0.0.1', 6031))
 
     while True:
         new_speed_data, _ = new_speed_udp_socket.recvfrom(1024)
