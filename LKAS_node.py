@@ -9,12 +9,12 @@ import cv2
 def receive_images():
 
     # Send distance over UDP
-    distance_udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    distance_server = ('127.0.0.1', 6021)
+    left_right_line_udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    left_right_line_server = ('127.0.0.1', 6022)
 
     # Receive camera images over TCP
     image_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    image_socket.connect(('127.0.0.1', 6011))  # Replace <server_ip> with server's IP
+    image_socket.connect(('127.0.0.1', 6012))  # Replace <server_ip> with server's IP
 
 
     data = b""
@@ -54,8 +54,8 @@ def receive_images():
         # time.sleep(0.5)
 
         # send distance to interface node
-        distance = 10
-        distance_udp_socket.sendto(str(distance).encode(), distance_server)
+        left_right_detect_position= 10
+        left_right_line_udp_socket.sendto(str(left_right_detect_position).encode(), left_right_line_server)
 
 
 if __name__ == "__main__":
